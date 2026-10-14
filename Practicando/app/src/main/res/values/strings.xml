@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Practicando</string>
+    <string name="saludo_epi_blas">Hola Epi y Blas</string>
 </resources>
