@@ -30,7 +30,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             Practica7Theme {
-
+                Practica7()
             }
         }
     }
