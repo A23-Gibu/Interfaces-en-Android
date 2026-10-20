@@ -93,7 +93,7 @@ fun Tarjeta() {
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.padding(vertical = 8.dp)
             ) {
-                Text(text = "📞", fontSize = 20.sp)
+                Text(text = "☎", fontSize = 20.sp)
                 Spacer(modifier = Modifier.width(16.dp))
                 Text(text = "+34 612 345 678", fontSize = 16.sp)
             }
@@ -113,7 +113,7 @@ fun Tarjeta() {
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.padding(vertical = 8.dp)
             ) {
-                Text(text = "✉️", fontSize = 20.sp)
+                Text(text = "✉", fontSize = 30.sp)
                 Spacer(modifier = Modifier.width(16.dp))
                 Text(text = "adrian@ejemplo.com", fontSize = 16.sp)
             }
