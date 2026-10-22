@@ -9,6 +9,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -28,6 +29,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.venanciob.dam.pmdm.practica11.ui.theme.Practica11Theme
+import java.nio.file.WatchEvent
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,21 +54,37 @@ fun TarjetaMensaje() {
             painter = imagen,
             contentDescription = null,
             modifier = Modifier
-                .size(40.dp)
+                .size(45.dp)
                 .clip(CircleShape)
+
         )
 
         Spacer(modifier = Modifier.width(12.dp))
 
-        Column {
-            Text(text = "Adrian Gibu", fontWeight = FontWeight.Bold)
-            Text(text = "Disponible", color = Color.Gray)
+        Column(
+            modifier = Modifier.weight(1f)
+            ) {
+
+            Text(text = "Adrian Gibu",
+                color = MaterialTheme.colorScheme.primary,
+                style = MaterialTheme.typography.titleMedium,
+                modifier = Modifier.padding(3.dp))
+
+            Surface(
+                shape = MaterialTheme.shapes.extraSmall,
+                shadowElevation = 2.dp,
+                modifier = Modifier.padding(horizontal = 20.dp)
+            ) {
+                Text(text = "Ocupado",
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.error)
+            }
         }
+
+
+
     }
     }
-
-
-
 
 
 
