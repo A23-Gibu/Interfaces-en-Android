@@ -15,6 +15,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.venanciob.dam.pmdm.practica11_ej2.ui.theme.Practica11_Ej2Theme
@@ -40,7 +41,8 @@ fun PantallaMensajes() {
 
         Text(
             text = "MIS MENSAJES",
-            style = MaterialTheme.typography.titleLarge
+            style = MaterialTheme.typography.headlineLarge,
+            fontWeight = FontWeight.ExtraBold
          )
 
 
