@@ -52,7 +52,8 @@ fun Tarjeta() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
-        // 2. Bloque superior: este sí lleva weight(1f) para absorber el espacio
+        // 2. Bloque superior: este sí lleva weight(1f) para absorber el espacio sobrante que no está siendo
+        // ocupado por los otros elementos de la columna
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -63,7 +64,7 @@ fun Tarjeta() {
             Image(
                 painter = imagen,
                 contentDescription = null,
-                modifier = Modifier.size(120.dp) // Tamaño controlado
+                modifier = Modifier.size(120.dp) // Tamaño de la imagen
             )
 
             Text(
@@ -77,7 +78,7 @@ fun Tarjeta() {
                 text = "Estudiante de DAM",
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color(0xFF1E5B22), // Verde oscuro para que combine con el fondo
+                color = Color(0xFF1E5B22), // Verde oscuro para que destaque sobre el fondo
                 modifier = Modifier.padding(top = 8.dp)
             )
         }
@@ -85,14 +86,14 @@ fun Tarjeta() {
         // 3. Bloque inferior (contactos): NO lleva weight, se queda pegado abajo
         Column(
             modifier = Modifier
-                .padding(bottom = 48.dp) // Separación del borde inferior
+                .padding(bottom = 150.dp) // Separación del borde inferior
         ) {
             // Fila 1: Teléfono
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.padding(vertical = 8.dp)
             ) {
-                Text(text = "📞", fontSize = 20.sp)
+                Text(text = "☎", fontSize = 20.sp)
                 Spacer(modifier = Modifier.width(16.dp))
                 Text(text = "+34 612 345 678", fontSize = 16.sp)
             }
@@ -112,7 +113,7 @@ fun Tarjeta() {
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.padding(vertical = 8.dp)
             ) {
-                Text(text = "✉️", fontSize = 20.sp)
+                Text(text = "✉", fontSize = 30.sp)
                 Spacer(modifier = Modifier.width(16.dp))
                 Text(text = "adrian@ejemplo.com", fontSize = 16.sp)
             }
