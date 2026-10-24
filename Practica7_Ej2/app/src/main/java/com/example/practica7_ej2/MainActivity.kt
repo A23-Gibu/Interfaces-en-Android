@@ -50,7 +50,7 @@ fun MontesCuadrante() {
             Cuadrante(
                 titulo = "4. Lhotse (8.516 m)",
                 descripcion = "Conectado al Everest a través del Collado Sur en el Himalaya. Su vertiente sur es una de las paredes verticales más imponentes y desafiantes del alpinismo.",
-                color = Color(0xFFD8F3DC), 
+                color = Color(0xFFD8F3DC),
                 modifier = Modifier.weight(1f)
             )
         }
