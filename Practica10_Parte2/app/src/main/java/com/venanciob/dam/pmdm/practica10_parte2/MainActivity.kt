@@ -59,7 +59,7 @@ fun PantallaPerfil() {
 
         Spacer(modifier = Modifier.height(32.dp))
 
-        // Fila que distribuye las tres acciones 
+        // Fila que distribuye las tres acciones
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceEvenly,
