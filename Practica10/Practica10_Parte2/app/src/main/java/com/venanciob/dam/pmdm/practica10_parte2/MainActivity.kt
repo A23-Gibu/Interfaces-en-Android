@@ -50,7 +50,7 @@ fun PantallaPerfil() {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        // Título de la pantalla
+        // Título 
         Text(
             text = "MI PERFIL",
             fontSize = 24.sp,
@@ -83,19 +83,19 @@ fun PantallaPerfil() {
                     Icon(
                         imageVector = Icons.Default.Favorite,
                         contentDescription = "Marcar favorito",
-                        tint = Color(0xFFE91E63) // Tono rosado/rojo para el corazón
+                        tint = Color(0xFFE91E63) 
                     )
                 }
                 Text(text = "Favorito", fontSize = 14.sp)
             }
 
-            // 3. Acción Borrar (con color distintivo de advertencia)
+            // 3. Acción Borrar 
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 IconButton(onClick = {}) {
                     Icon(
                         imageVector = Icons.Default.Delete,
                         contentDescription = "Borrar elemento",
-                        tint = MaterialTheme.colorScheme.error // Color de error/peligro
+                        tint = MaterialTheme.colorScheme.error  
                     )
                 }
                 Text(text = "Borrar", fontSize = 14.sp)

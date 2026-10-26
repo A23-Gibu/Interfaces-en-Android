@@ -54,7 +54,7 @@ fun PantallaComparacionBotones() {
 
         Spacer(modifier = Modifier.height(32.dp))
 
-        // 1. Botón relleno
+        // Botón relleno
         Button(
             onClick = {},
             modifier = Modifier
@@ -66,7 +66,7 @@ fun PantallaComparacionBotones() {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // 2. Botón elevado con sombra
+        // Botón elevado con sombra
         ElevatedButton(
             onClick = {},
             modifier = Modifier
@@ -78,7 +78,7 @@ fun PantallaComparacionBotones() {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // 3. Botón con tono suave
+        // Botón con tono suave
         FilledTonalButton(
             onClick = {},
             modifier = Modifier
