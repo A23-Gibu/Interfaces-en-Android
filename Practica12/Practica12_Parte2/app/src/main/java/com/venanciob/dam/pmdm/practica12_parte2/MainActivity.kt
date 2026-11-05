@@ -57,7 +57,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-// 1. Data class para las tareas (Página 10)
+// Data class para las tareas 
 data class Tarea(
     val titulo: String,
     val descripcion: String
@@ -80,7 +80,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-// 2. Pantalla principal que integra Scaffold, LazyColumn y el contador (Páginas 8-11)
+// Pantalla principal
 @Composable
 fun PantallaMiAula() {
     // Estado del contador de nuevas tareas vinculado al FAB y a reiniciar
@@ -96,7 +96,7 @@ fun PantallaMiAula() {
 
     Scaffold(
         floatingActionButton = {
-            // FAB obligatorio que incrementa el contador al pulsar (Página 11)
+            // FAB obligatorio que incrementa el contador al pulsar 
             FloatingActionButton(
                 onClick = { nuevasTareas++ },
                 containerColor = MaterialTheme.colorScheme.primary,
@@ -126,17 +126,17 @@ fun PantallaMiAula() {
                 )
             }
 
-            // Zona 1: Cabecera de perfil (Página 9)
+            // Zona 1: Cabecera de perfil 
             item {
                 CabeceraPerfil()
             }
 
-            // Zona 2: Imagen destacada con Box (Página 9)
+            // Zona 2: Imagen destacada con Box 
             item {
                 ImagenDestacada()
             }
 
-            // Zona 3: Botonera completa y contador (Páginas 9-11)
+            // Zona 3: Botonera completa y contador 
             item {
                 ZonaAcciones(
                     contador = nuevasTareas,
@@ -155,7 +155,7 @@ fun PantallaMiAula() {
                 )
             }
 
-            // Zona 4: Lista de tarjetas interactivas (Páginas 10-11)
+            // Zona 4: Lista de tarjetas interactivas 
             items(tareas) { tarea ->
                 TarjetaTarea(tarea = tarea)
             }
@@ -163,7 +163,7 @@ fun PantallaMiAula() {
     }
 }
 
-// Zona 1: Cabecera con avatar y datos del alumno (Página 9)
+// Zona 1: Cabecera con avatar y datos del alumno 
 @Composable
 fun CabeceraPerfil() {
     Row(
@@ -205,7 +205,7 @@ fun CabeceraPerfil() {
     }
 }
 
-// Zona 2: Contenedor Box que superpone texto sobre imagen/fondo decorativo (Página 9)
+// Zona 2: Contenedor Box que superpone texto sobre imagen/fondo decorativo 
 @Composable
 fun ImagenDestacada() {
     Box(
@@ -246,7 +246,7 @@ fun ImagenDestacada() {
     }
 }
 
-// Zona 3: Botonera con los 6 tipos de botones y gestión del contador (Páginas 9-11)
+// Zona 3: Botonera con los 6 tipos de botones y gestión del contador 
 @Composable
 fun ZonaAcciones(contador: Int, onReiniciar: () -> Unit) {
     Column(
@@ -330,7 +330,7 @@ fun ZonaAcciones(contador: Int, onReiniciar: () -> Unit) {
     }
 }
 
-// Zona 4: Tarjeta de tarea interactiva con animaciones de color y tamaño (Páginas 10-11)
+// Zona 4: Tarjeta de tarea interactiva con animaciones de color y tamaño 
 @Composable
 fun TarjetaTarea(tarea: Tarea) {
     var expandida by remember { mutableStateOf(false) }
@@ -372,7 +372,7 @@ fun TarjetaTarea(tarea: Tarea) {
     }
 }
 
-// 3. Previews en Modo Claro y Modo Oscuro (Página 11 y 13)
+// 3. Previews en Modo Claro y Modo Oscuro 
 @Preview(name = "Mi Aula - Claro", showBackground = true)
 @Composable
 fun PreviewMiAulaClaro() {
