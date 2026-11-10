@@ -32,81 +32,48 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             Ej2_AgregarImagenTheme {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    GreetingImage(
-                        message = "¡Feliz Cumpleaños Epi!",
-                        from = "De parte de Blas"
-                    )
-                }
+                HappyBirthdayImage("Laura", "Adrian", Modifier.fillMaxSize())
             }
         }
     }
 }
 
-// 1. Contenedor Box: superpone la imagen de fondo y el contenido de texto
 @Composable
-fun GreetingImage(message: String, from: String, modifier: Modifier = Modifier) {
-    // Se accede al recurso sin extensión (res/drawable/epi_blas)
-    val image = painterResource(R.drawable.img)
+fun HappyBirthdayImage(name: String, from: String, modifier: Modifier = Modifier) {
+    val imagen = painterResource(R.drawable.img_1)
 
-    Box(modifier = modifier.fillMaxSize()) {
-        // Imagen ajustada a pantalla completa y con opacidad al 50%
+    Box(modifier = modifier){
         Image(
-            painter = image,
+            painter = imagen,
             contentDescription = null,
-            contentScale = ContentScale.Crop,
             alpha = 0.5F,
+            contentScale = ContentScale.Crop,
             modifier = Modifier.fillMaxSize()
         )
-        // Texto colocado sobre la imagen
-        GreetingText(
-            message = message,
-            from = from,
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(16.dp)
-        )
+
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(
+                text = "Happy Birthday ${name.uppercase()}",
+                fontSize = 50.sp,
+                fontWeight = FontWeight.SemiBold,
+                modifier = Modifier.padding(bottom = 20.dp),
+                textAlign = TextAlign.Center
+            )
+
+            Text(
+                text = "From ${from.uppercase()}",
+                fontSize = 20.sp
+            )
+        }
     }
 }
 
-// 2. Textos organizados en columna centrada
+@Preview(showSystemUi = true)
 @Composable
-fun GreetingText(message: String, from: String, modifier: Modifier = Modifier) {
-    Column(
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = modifier
-    ) {
-        Text(
-            text = message,
-            fontSize = 42.sp,
-            lineHeight = 48.sp,
-            fontWeight = FontWeight.ExtraBold,
-            color = Color.Black,
-            textAlign = TextAlign.Center
-        )
-        Text(
-            text = from,
-            fontSize = 24.sp,
-            fontWeight = FontWeight.Medium,
-            color = Color.Black,
-            modifier = Modifier
-                .padding(top = 16.dp)
-                .align(alignment = Alignment.CenterHorizontally) // Firma centrada (desafío de la práctica)
-        )
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    Ej2_AgregarImagenTheme {
-        GreetingImage(
-            message = "¡Feliz Cumpleaños Epi!",
-            from = "De parte de Blas"
-        )
-    }
+fun PreviewHappyBirthdayImage(){
+    HappyBirthdayImage("Laura", "Adrian", Modifier.fillMaxSize())
 }
