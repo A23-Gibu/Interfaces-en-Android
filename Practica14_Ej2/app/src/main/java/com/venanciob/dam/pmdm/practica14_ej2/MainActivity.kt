@@ -4,17 +4,20 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.slideInVertically
-import androidx.compose.animation.slideOutVertically
+import androidx.compose.animation.animateColor
+import androidx.compose.animation.core.animateDp
+import androidx.compose.animation.core.updateTransition
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -31,18 +34,22 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
+enum class EstadoEntrenamiento {
+    Normal,
+    Activa
+}
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            // Se usa MaterialTheme directamente para evitar dependencias cruzadas de paquetes
             MaterialTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    PerfilAnimado()
+                    PantallaEntrenamiento()
                 }
             }
         }
@@ -50,8 +57,29 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun PerfilAnimado() {
-    var mostrar by remember { mutableStateOf(false) }
+fun PantallaEntrenamiento() {
+    var estado by remember {
+        mutableStateOf(EstadoEntrenamiento.Normal)
+    }
+
+    val transition = updateTransition(
+        targetState = estado,
+        label = "entrenamiento"
+    )
+
+    val color by transition.animateColor(label = "color") { s ->
+        if (s == EstadoEntrenamiento.Normal)
+            MaterialTheme.colorScheme.surface
+        else
+            MaterialTheme.colorScheme.primaryContainer
+    }
+
+    val ancho by transition.animateDp(label = "ancho") { s ->
+        if (s == EstadoEntrenamiento.Normal) 220.dp else 320.dp
+    }
+
+    val texto = if (estado == EstadoEntrenamiento.Normal)
+        "DESCANSO" else "ENTRENANDO"
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -59,33 +87,63 @@ fun PerfilAnimado() {
             .fillMaxSize()
             .padding(24.dp)
     ) {
-        Image(
-            painter = painterResource(id = R.drawable.img_1),
-            contentDescription = "Mancuerna",
-            modifier = Modifier
-                .size(120.dp)
-                .clip(CircleShape)
-        )
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(60.dp))
 
-        Text(text = "Descansando", style = MaterialTheme.typography.headlineSmall)
+        Surface(
+            color = color,
+            shape = RoundedCornerShape(16.dp),
+            shadowElevation = 4.dp
+        ) {
+            Box(
+                modifier = Modifier
+                    .width(ancho)
+                    .padding(24.dp),
+                contentAlignment = Alignment.Center
+            ) {
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Image(
+                        painter = painterResource(id = R.drawable.img_1),
+                        contentDescription = "Mancuerna",
+                        modifier = Modifier
+                            .size(72.dp)
+                            .clip(CircleShape)
+                    )
 
-        Spacer(modifier = Modifier.height(16.dp))
+                    Spacer(modifier = Modifier.height(16.dp))
 
-        Button(onClick = { mostrar = !mostrar }) {
-            Text(if (mostrar) "OCULTAR" else "MOSTRAR")
+                    Text(
+                        text = texto,
+                        style = MaterialTheme.typography.headlineSmall,
+                        color = MaterialTheme.colorScheme.onSurface
+                    )
+                }
+            }
         }
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(24.dp))
 
-
+        Button(
+            onClick = {
+                estado = if (estado == EstadoEntrenamiento.Normal)
+                    EstadoEntrenamiento.Activa
+                else
+                    EstadoEntrenamiento.Normal
+            }
+        ) {
+            Text(
+                if (estado == EstadoEntrenamiento.Normal)
+                    "INICIAR ENTRENAMIENTO" else "FINALIZAR"
+            )
+        }
     }
 }
 
-@Preview(showBackground = true)
+@Preview(name = "Estado Normal", showBackground = true)
 @Composable
-fun PreviewPerfilAnimado() {
+fun PreviewDescanso() {
     MaterialTheme {
-        PerfilAnimado()
+        PantallaEntrenamiento()
     }
 }
