@@ -9,117 +9,100 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
-import androidx.compose.material3.Surface
+import androidx.compose.foundation.layout.size
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.style.TextAlign
+import com.venanciob.dam.pmdm.primerainterfaz.ui.theme.PrimeraInterfazTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            Surface(
-                modifier = Modifier.fillMaxSize(),
-                color = Color(0xFFE3F2FD) // Fondo azul claro suave
-            ) {
-                BirthdayCardEpiBlas(modifier = Modifier.padding(24.dp))
+            PrimeraInterfazTheme {
+                HappyBirthday(name = "Bertrex")
             }
         }
     }
 }
 
 @Composable
-fun BirthdayCardEpiBlas(modifier: Modifier = Modifier) {
+fun HappyBirthday(name: String) {
     Column(
-        modifier = modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier.fillMaxSize()
     ) {
-        // 1. Tarta
         Text(
-            text = "🎂",
-            fontSize = 80.sp
+            text = "\uD83C\uDF82",
+            fontSize = 200.sp,
+            modifier = Modifier.padding(top = 50.dp, bottom = 10.dp)
         )
-
-        Spacer(modifier = Modifier.height(24.dp))
-
-        // 2. ¡FELIZ CUMPLEAÑOS! (Negro con negrita extra)
         Text(
-            text = "¡FELIZ CUMPLEAÑOS!",
-            fontSize = 26.sp,
-            fontWeight = FontWeight.ExtraBold,
-            color = Color.Black,
-            textAlign = TextAlign.Center
-        )
-
-        Spacer(modifier = Modifier.height(8.dp))
-
-        // 3. Nombre: EPI (Negro en negrita grande)
-        Text(
-            text = "EPI",
-            fontSize = 42.sp,
+            text = "Feliz cumpleaños!",
             fontWeight = FontWeight.Bold,
-            color = Color.Black,
-            textAlign = TextAlign.Center
+            color = Color(0xFFFF85C8),
+            fontSize = 40.sp,
+            modifier = Modifier.padding(bottom = 10.dp)
+
         )
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        // 4. Mensaje original (Negro para máxima legibilidad)
         Text(
-            text = "Espero que tengas un día increíble y que disfrutes mucho de tu cumpleaños.",
-            fontSize = 16.sp,
-            lineHeight = 22.sp,
-            color = Color.Black,
+            text = name.uppercase(),
+            fontWeight = FontWeight.ExtraBold,
+            fontSize = 50.sp,
+            color = Color(0xFF484AC7),
+            modifier = Modifier.padding(bottom = 30.dp)
+        )
+        Text(
+            text = "Espero que tengas un día genial y que disfrutes mucho de tu compleaños.",
+            color = Color(0xFF49B763),
             textAlign = TextAlign.Center,
-            modifier = Modifier.padding(horizontal = 16.dp)
+            fontSize = 20.sp,
+            modifier = Modifier.padding(bottom = 20.dp)
         )
 
-        Spacer(modifier = Modifier.height(28.dp))
-
-        // 5. Fila con emojis temáticos
         Row(
-            horizontalArrangement = Arrangement.Center,
-            verticalAlignment = Alignment.CenterVertically
+            modifier = Modifier.padding(bottom = 50.dp)
         ) {
-            Text(text = "🦆", fontSize = 34.sp)
-            Spacer(modifier = Modifier.width(18.dp))
-            Text(text = "🍪", fontSize = 34.sp)
-            Spacer(modifier = Modifier.width(18.dp))
-            Text(text = "🐦", fontSize = 34.sp)
+            Text(
+                text = "\uD83C\uDF89",
+                fontSize = 50.sp,
+                modifier = Modifier.padding(horizontal = 20.dp)
+            )
+            Text(
+                text = "\uD83D\uDC93",
+                fontSize = 50.sp,
+                modifier = Modifier.padding(horizontal = 20.dp)
+            )
+            Text(
+                text = "\uD83C\uDF88",
+                fontSize = 50.sp,
+                modifier = Modifier.padding(horizontal = 20.dp)
+            )
         }
 
-        Spacer(modifier = Modifier.height(36.dp))
-
-        // 6. Firma: De parte de Blas (Negro)
         Text(
-            text = "De parte de Blas",
+            text = "De parte de Adrian",
+            color = Color(0xFF2196F3),
             fontSize = 15.sp,
-            fontWeight = FontWeight.Medium,
-            color = Color.Black,
-            textAlign = TextAlign.Center
+            fontWeight = FontWeight.SemiBold
         )
     }
+
 }
 
-@Preview(showBackground = true)
+@Preview(showSystemUi = true)
 @Composable
-fun BirthdayCardPreview() {
-    Surface(
-        modifier = Modifier.fillMaxSize(),
-        color = Color(0xFFE3F2FD) // Mismo fondo azul en la vista previa
-    ) {
-        BirthdayCardEpiBlas(modifier = Modifier.padding(24.dp))
-    }
+fun GreetingPreview() {
+    HappyBirthday("Laura")
 }
