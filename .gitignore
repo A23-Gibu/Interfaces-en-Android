@@ -1,0 +1,17 @@
+# Configuración de IDEs (Android Studio / IntelliJ)
+.idea/
+**/.idea/
+*.iml
+**/*.iml
+
+# Compilación y cachés de Gradle
+.gradle/
+**/.gradle/
+build/
+**/build/
+
+# Archivos locales con rutas de tu PC
+local.properties
+captures/
+.externalNativeBuild/
+.cxx/
