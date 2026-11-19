@@ -1,0 +1,41 @@
+# Archivos compilados y binarios
+*.apk
+*.aar
+*.ap_
+*.aab
+*.dex
+*.class
+
+# Carpetas de compilación (Gradle y Android)
+build/
+**/build/
+.gradle/
+**/.gradle/
+
+# Configuración local y rutas del SDK (nunca deben subirse)
+local.properties
+
+# Android Studio / IntelliJ IDEA
+.idea/
+*.iml
+*.ipr
+*.iws
+.navigation/
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Kotlin
+*.kotlin_module
+
+# Archivos de registro, errores y temporales
+*.log
+hs_err_pid*
+replay_pid*
+.DS_Store
+Thumbs.db
+
+# Claves de firma y secretos (Seguridad)
+*.jks
+*.keystore
+google-services.json
